@@ -267,7 +267,7 @@ class Validator
      * @var Integer
      * @return bool|string
      */
-    protected function subMidNumbers($number, $start, $length)
+    protected static function subMidNumbers($number, $start, $length)
     {
         $number = substr($number, ($start - 1), $length);
         return $number;
