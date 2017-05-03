@@ -1,0 +1,44 @@
+{
+  "name": "smart-twists/iranian-information-validator",
+  "description": "Additional Iranian Information Validator Functions for the Laravel Framework",
+  "keywords": [
+    "validation",
+    "Validator",
+    "laravel",
+    "zipcode",
+    "iban",
+    "creditcard",
+    "isbn",
+    "isin",
+    "isodate",
+    "nationalcode",
+    "code meli",
+    "zip code",
+    "credit card",
+    "کد ملی",
+    "شماره ملی",
+    "شماره کارت",
+    "کد پستی",
+    "شبا",
+    "بانک"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Saeed Sajadi",
+      "email": "saeed.sajadi@gmail.com",
+      "homepage": "http://saeedsajadi.ir/"
+    }
+  ],
+  "require": {
+    "php": ">=5.3.0",
+    "illuminate/support": "~4|~5",
+    "illuminate/validation": "~4|~5"
+  },
+  "autoload": {
+    "psr-4": {
+      "SmartTwists\\IranianInformationValidation\\": "src/Validation"
+    }
+  },
+  "minimum-stability": "stable"
+}
