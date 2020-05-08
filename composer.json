@@ -49,5 +49,12 @@
       "SmartTwists\\IranianInformationValidation\\": "src/Validation"
     }
   },
+  "extra":{
+    "laravel":{
+      "providers":[
+        "SmartTwists\\IranianInformationValidation\\ValidationServiceProvider"
+      ]
+    }
+  },
   "minimum-stability": "stable"
 }
