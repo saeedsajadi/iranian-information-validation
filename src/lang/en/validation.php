@@ -9,5 +9,6 @@ return array(
     'isodate' => 'The value :attribute must be a valid date in ISO 8601 format.',
     'zipcode' => 'The value :attribute must be a valid zip code.',
     'zipcode' => 'The value :attribute must be a valid national code.',
-
+    'ir_mobile' => ':attribute must be a valid mobile number',
+    'ir_phone' => ':attribute must be a valid phone number'
 );

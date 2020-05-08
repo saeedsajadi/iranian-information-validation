@@ -72,4 +72,24 @@ class ValidatorExtension extends \Illuminate\Validation\Validator
     {
         return Validator::isNationalcode($value);
     }
+
+    /**
+     * Provides 'ir_mobile' validation rule for Laravel
+     *
+     * @return bool
+     */
+    public function validateIRMobile($attribute, $value, $parameters)
+    {
+        return Validator::isIrMobile($value);
+    }
+
+    /**
+     * Provides 'ir_phone' validation rule for Laravel
+     *
+     * @return bool
+     */
+    public function validateIRPhone($attribute, $value, $parameters)
+    {
+        return Validator::isIrPhone($value);
+    }
 }

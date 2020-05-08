@@ -8,5 +8,6 @@ return array(
     'isodate' => 'مقدار :attribute باید یک مقدار صحیح در ساختار ISO 8601 باشد.',
     'zipcode' => 'مقدار :attribute باید یک کد پستی معتبر باشد.',
     'nationalcode' => 'مقدار :attribute باید یک کد ملی معتبر باشد.',
-
+    'ir_mobile' => ':attribute باید یک شماره موبایل معتبر باشد',
+    'ir_phone' => ':attribute باید یک شماره تلفن معتبر باشد'
 );
