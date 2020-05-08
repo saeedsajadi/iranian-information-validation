@@ -269,7 +269,7 @@ class Validator
      */
     public static function isIrMobile($value)
     {
-        return !!preg_match('/(09)[0-9]{9}/', $value);
+        return ((!!preg_match('/(09)[0-9]{9}/', $value)) && (strlen($value) == 11));
     }
 
     /**
@@ -281,7 +281,7 @@ class Validator
      */
     public static function isIrPhone($value)
     {
-        if(preg_match('/(0)[0-9]{10}/', $value) == false){
+        if(strlen($value) != 11 || preg_match('/(0)[0-9]{10}/', $value) == false){
             return false;
         }
 
