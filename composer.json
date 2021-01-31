@@ -44,9 +44,7 @@
     }
   ],
   "require": {
-    "php": "^7.2.5",
-    "illuminate/support": "^7.0",
-    "illuminate/validation": "^7.0"
+    "php": "^7.2.5"
   },
   "autoload": {
     "psr-4": {
