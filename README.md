@@ -47,6 +47,14 @@ The field under validation must be a valid date in ISO 8601 format.
 
 The field under validation must be a valid national code.
 
+### ir_mobile
+
+The field under validation must be a valid iranian mobile number.
+
+### ir_phone
+
+The field under validation must be a valid iranian phone number.
+
 ### zipcode
 
 The field under validation must be a valid zip code.
@@ -69,6 +77,8 @@ Or add your custom messages directly to the validator like [described in the doc
 * Validator::isIsbn - Checks if given value is valid International Standard Book Number (ISBN).
 * Validator::isIsodate - Checks if given value is date in ISO 8601 format.
 * Validator::isNationalcode - checks if given value is valid national code.
+* Validator::isIrMobile - checks if given value is valid Iranian mobile number.
+* Validator::isIrPhone - checks if given value is valid Iranian phone number.
 * Validator::isZipcode - checks if given value is valid zip cide.
 ## License
 

@@ -2,37 +2,11 @@
 
 namespace SmartTwists\IranianInformationValidation;
 
+use Illuminate\Support\Str;
 use Illuminate\Support\ServiceProvider;
 
 class ValidationServiceProvider extends ServiceProvider
 {
-    /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = false;
-
-    /**
-     * Actual provider
-     *
-     * @var \Illuminate\Support\ServiceProvider
-     */
-    protected $provider;
-
-    /**
-     * Create a new service provider instance.
-     *
-     * @param  \Illuminate\Contracts\Foundation\Application  $app
-     * @return void
-     */
-    public function __construct($app)
-    {
-        parent::__construct($app);
-
-        $this->provider = $this->getProvider();
-    }
-
     /**
      * Bootstrap the application events.
      *
@@ -40,7 +14,23 @@ class ValidationServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->provider->boot();
+        // load translation files
+        $this->loadTranslationsFrom(
+            __DIR__ . '/../lang',
+            'validation'
+        );
+
+        // registering intervention validator extension
+        $this->app['validator']->resolver(function($translator, $data, $rules, $messages, $customAttributes) {
+
+            // set the validation error messages
+            foreach (get_class_methods('SmartTwists\IranianInformationValidation\Validator') as $method) {
+                $key = $this->getTranslationKeyFromMethodName($method);
+                $messages[$key] = $this->getErrorMessage($translator, $messages, $key);
+            }
+
+            return new ValidatorExtension($translator, $data, $rules, $messages, $customAttributes);
+        });
     }
 
     /**
@@ -50,23 +40,40 @@ class ValidationServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->provider->register();
+        # code...
     }
 
     /**
-     * Return ServiceProvider according to Laravel version
+     * Return the matching error message for the key
      *
-     * @return \ProviderInterface
+     * @param  string $key
+     * @return string
      */
-    private function getProvider()
+    private function getErrorMessage($translator, $messages, $key)
     {
-        $app = $this->app;
-        $version = intval($app::VERSION);
-        $provider = sprintf(
-            'SmartTwists\IranianInformationValidation\ValidationServiceProviderLaravel%d', $version
-        );
+        // return error messages passed directly to the validator
+        if (isset($messages[$key])) {
+            return $messages[$key];
+        }
 
-        return new $provider($app);
+        // return error message from validation translation file
+        if ($translator->has("validation.{$key}")) {
+            return $translator->get("validation.{$key}");
+        }
+
+        // return packages default message
+        return $translator->get("validation::validation.{$key}");
+    }
+
+    /**
+     * Return translation key for correspondent method name
+     *
+     * @param  string $name
+     * @return string
+     */
+    private function getTranslationKeyFromMethodName($name)
+    {
+        return Str::snake(substr($name, 2));
     }
 
     /**

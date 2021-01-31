@@ -18,6 +18,8 @@
     "melli",
     "code melli",
     "code meli",
+    "mobile",
+    "phone",
     "zip code",
     "credit card",
     "کد",
@@ -27,6 +29,8 @@
     "کد ملی",
     "شماره ملی",
     "شماره کارت",
+    "موبایل",
+    "تلفن ثابت",
     "کد پستی",
     "شبا",
     "بانک"
@@ -40,9 +44,9 @@
     }
   ],
   "require": {
-    "php": ">=5.3.0",
-    "illuminate/support": "~4|~5",
-    "illuminate/validation": "~4|~5"
+    "php": "^7.2.5",
+    "illuminate/support": "^7.0",
+    "illuminate/validation": "^7.0"
   },
   "autoload": {
     "psr-4": {

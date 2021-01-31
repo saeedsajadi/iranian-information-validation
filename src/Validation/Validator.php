@@ -261,6 +261,72 @@ class Validator
     }
 
     /**
+     * IR mobile validation
+     *
+     * @access Public
+     * @var String
+     * @return bool
+     */
+    public static function isIrMobile($value)
+    {
+        return ((!!preg_match('/(09)[0-9]{9}/', $value)) && (strlen($value) == 11));
+    }
+
+    /**
+     * IR phone validation
+     *
+     * @access Public
+     * @var String
+     * @return bool
+     */
+    public static function isIrPhone($value)
+    {
+        if(strlen($value) != 11 || preg_match('/(0)[0-9]{10}/', $value) == false){
+            return false;
+        }
+
+        $iran_provinces_code = [
+            '021',
+            '026',
+            '025',
+            '086',
+            '024',
+            '023',
+            '081',
+            '028',
+            '031',
+            '044',
+            '011',
+            '074',
+            '083',
+            '051',
+            '045',
+            '017',
+            '041',
+            '054',
+            '087',
+            '071',
+            '066',
+            '034',
+            '056',
+            '013',
+            '077',
+            '076',
+            '061',
+            '038',
+            '058',
+            '035',
+            '084',
+        ];
+
+        if(in_array(substr($value,0, 3), $iran_provinces_code)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
      * Get Portion of String Specified
      *
      * @access Protected
