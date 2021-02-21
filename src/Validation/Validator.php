@@ -269,6 +269,7 @@ class Validator
      */
     public static function isIrMobile($value)
     {
+        $value = self::convert2en_number($value);
         return ((!!preg_match('/(09)[0-9]{9}/', $value)) && (strlen($value) == 11));
     }
 
@@ -281,6 +282,7 @@ class Validator
      */
     public static function isIrPhone($value)
     {
+        $value = self::convert2en_number($value);
         if(strlen($value) != 11 || preg_match('/(0)[0-9]{10}/', $value) == false){
             return false;
         }
@@ -337,6 +339,17 @@ class Validator
     {
         $number = substr($number, ($start - 1), $length);
         return $number;
+    }
+    
+    private static function convert2en_number($string) {
+        $persian = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+        $arabic = ['٩', '٨', '٧', '٦', '٥', '٤', '٣', '٢', '١','٠'];
+
+        $num = range(0, 9);
+        $convertedPersianNums = str_replace($persian, $num, $string);
+        $englishNumbersOnly = str_replace($arabic, $num, $convertedPersianNums);
+
+        return $englishNumbersOnly;
     }
 
 }
